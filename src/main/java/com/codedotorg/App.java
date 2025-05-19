@@ -16,5 +16,4 @@ public class App extends Application {
         ByteBud chat = new ByteBud(primaryStage, 400, 450);
         chat.startApp();
     }
-
 }
