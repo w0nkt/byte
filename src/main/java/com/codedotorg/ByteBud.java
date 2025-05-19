@@ -43,6 +43,7 @@ public class ByteBud {
 
         conversation = new TextArea("");
         conversation.setWrapText(true);
+        conversation.setEditable(false);
 
         inputField = createInputField();
     }
@@ -73,6 +74,7 @@ public class ByteBud {
         HBox inputLayout = createInputLayout();
 
         VBox mainLayout = new VBox(20);
+        mainLayout.setPadding(new Insets(10));
         mainLayout.getChildren().addAll(titleLabel, conversation, inputLayout);
 
         Scene mainScene = new Scene(mainLayout, width, height);
@@ -147,9 +149,20 @@ public class ByteBud {
      * @return A string containing the bot's response.
      */
     private String getResponse(String inputText) {
-        
+        String input = inputText.toLowerCase();
 
-        return "";
+        if (input.contains("hello") || input.contains("hi")) {
+            return "Hello! How can I help you today?";
+        } else if (input.contains("weather")) {
+            return "I can't check the weather yet, but I hope it's nice where you are!";
+        } else if (input.contains("bye")) {
+            return "Goodbye! Have a great day!";
+        } else if (input.contains("help")) {
+            return "You can ask me anything, or just say hello!";
+        } else if (input.contains("name")) {
+            return "I'm ByteBud, your friendly chatbot!";
+        } else {
+            return "Sorry, I didn't understand that. Try asking something else!";
+        }
     }
-
 }
